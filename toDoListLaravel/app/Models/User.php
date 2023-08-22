@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'task_id',
+      
     ];
 
     /**
@@ -44,6 +44,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
     public function task() {
-        return $this->hasOne(related:task::class);
+        return $this->hasMany(related:task::class);
     }
 }
