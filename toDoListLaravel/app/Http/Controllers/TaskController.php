@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     function getUser(Request $request){
         $id = $request->input(key: 'id');
-        return User::join('tasks', 'Users.task_id', 'task_id')
+        return User::join('tasks', 'Users.id', 'tasks.user_id')
         //here we select which columns we want from the table
         ->select('users.*','tasks.title as title','tasks.description as description')
         ->where('users.id', $id)
@@ -19,7 +19,7 @@ class TaskController extends Controller
 
 
     function getUsers(){        
-        $read = User::join('tasks', 'Users.task_id', 'task_id')->get();
+        $read = User::join('tasks', 'Users.id', 'tasks.user_id')->get();
         if($read){
             //response is taken as an array
             return response ([
